@@ -7,10 +7,11 @@ public class Gastos{
 
       Scanner scanner = new Scanner(System.in);
       int opcion;
-      double importe = 0;
+      double importe;
       double suma = 0;
       double contador = 0;
 
+      
 
       do{
         System.out.println("----------Menú----------");
@@ -21,39 +22,44 @@ public class Gastos{
         System.out.println("Opción: ");
         System.out.println("------------------------");
 
+        System.out.print("Introducir una opción: ");
+
         opcion = scanner.nextInt();
-
-        
+       
         switch(opcion){
-
+            
             case 1:
                 System.out.print("Añadir gastos: ");
                 importe = scanner.nextDouble();
+
+                if(importe <= 0){
+                    System.out.println("El importe debe ser mayor que cero.");
+                }else{
+                    suma += importe;
+                    contador ++;
+                }
                 break;
 
             case 2:
-                System.out.println("Ver total: " + suma);
-                importe = scanner.nextDouble();
-                suma += importe;
-                
+                System.out.printf("Total: %.2f%n" , suma);
                 break;
+                
 
             case 3:
-                System.out.println("Ver número de gastos: ");
-                contador ++;
-                System.out.println(contador);
+                System.out.println("Gastos resgistrados: " + contador);               
+                break;
+
+            case 0:
+                System.out.println("Programa terminado");
                 break;
 
             default:
                 System.out.println("Opción no válida.");
-                break;
-
-                
+                break;                
         } 
          
       }while (opcion != 0);
         scanner.close();
     }
-      
-    
+
 }
